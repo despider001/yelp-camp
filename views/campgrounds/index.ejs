@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+
+<div class ="jumbotron text-center mb-0" style="background-color:#FAFBFC">
+    <h3>Welcome to YelpCamp</h3>
+    <p class="subtitle">Find your dream place for summer camp</p>
+      <a class="btn btn-primary mb-4" href="/camp/new">
+        Add New Camp
+      </a>
+</div>
+
+<!--<div class="container">-->
+    <div class="card-deck mx-4 mt-2">
+    <% campData.forEach(function(camp){ %>
+      <div class="card mx-0 col-md-3 ml-0 m-2 p-0" style="max-width: 305px;">
+        <img class="card-img-top" src="<%= camp.url %>"  height="250px" alt="Camp image">
+        <div class="card-block">
+          <p class="card-text"><%= camp.name %></p>
+          <a class="btn btn-primary" href="/camp/<%= camp._id %>">More info</a>
+        </div>
+      </div>
+        
+    <% }) %>
+      
+    </div>
+<!--</div>-->
+
+
+<% include ../partials/footer %>

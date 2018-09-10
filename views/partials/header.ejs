@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Md Sadiqur Rahman">
+    <link rel="icon" href="https://cdn.rawgit.com/Deftwun/e3756a8b518cbb354425/raw/6584db8babd6cbc4ecb35ed36f0d184a506b979e/free-code-camp-logo.svg">
+    <link rel="stylesheet" href="stylesheets/app.css">
+
+    <title>YelpCamp</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="/camp">YelpCamp</a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          
+        </ul>
+        <div class="navbar-nav"> 
+          <% if(!currentUser){ %>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
+          <% }else{ %>
+          
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#">Logged in as <span style="text-transform:capitalize;"><%= currentUser.username %></span></a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          <% } %>
+          
+        </div>
+      </div>
+    </nav>
+    
+  <div class="container">
+    <% if(success && success.length > 0){ %>
+    <div class="alert alert-success mt-2" role="alert">
+      <%= success %>
+    </div>
+    <% } %>
+    <% if(error && error.length > 0){ %>
+    <div class="alert alert-danger mt-2" role="alert">
+      <%= error %>
+    </div>
+    <% } %>
+  </div>

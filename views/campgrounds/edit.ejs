@@ -1,0 +1,37 @@
+<% include ../partials/header %>
+
+<div class ="jumbotron text-center">
+    <h3 class="my-3">Edit <%= campData.name %></h3>
+    
+
+          <form method="POST" action ="/camp/<%= campData.id %>?_method=PUT">
+        <div class="form-group row mt-5">
+          <label for="inputEmail3" class="col-sm-3 col-form-label"></label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name = "camp[name]" value="<%= campData.name %>">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="url" class="col-sm-3 col-form-label"></label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="camp[url]" value="<%= campData.url %>">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="description" class="col-sm-3 col-form-label"></label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="camp[description]" value="<%= campData.description %>">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="submit" class="col-sm-3 col-form-label"></label>
+          <div class="col-sm-6">
+            <input type="submit" class="form-control btn btn-success" value = "Submit">
+          </div>
+        </div>
+        </form>
+
+</div>
+
+
+<% include ../partials/footer %>

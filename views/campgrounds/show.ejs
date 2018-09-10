@@ -1,0 +1,64 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="card-deck ml-0">
+      <div class="card mx-0 col-lg-6 m-4 p-0">
+          
+        <img class="card-img-top" src="<%= campData.url %>" height="400px" alt="Camp image">
+        <div class="card-block">
+          <h3 class="text-center"><%= campData.name %></h3>
+          
+          <p class="card-text"><%= campData.description %></p>
+          <div class="">
+            <div class="float-left" style="width:40%">
+                <p class="card-text"><em>Added by: <span style="text-transform:capitalize;"><%= campData.author.username %></span></em></p>
+            </div>
+            <div class="float-left text-center" style="width:60%">
+                <hr>
+            </div>
+          </div>
+          
+          <% if(currentUser && currentUser._id.equals(campData.author.id)){ %>
+          <form method="POST" action="/camp/<%=campData._id %>?_method=DELETE">
+            <button class="btn btn-danger float-right btn-sm" type="submit">Delete</button>
+          </form>
+          <a href="/camp/<%=campData._id %>/edit" class="btn btn-warning float-right mx-2 btn-sm">Edit</a>
+          <% } %>
+          
+        </div>
+      </div>
+      <div class="card mx-0 col-lg-6 m-4 p-0">
+          <div class="card-header" style="background-color:#FAFBFC">
+            <h3 class="text-primary ml-5 pl-4">Reviews</h3>
+            
+            <div>
+              <div class="float-left" style="width:65%">
+                  <hr class="bg-info">
+              </div>
+              <div class="float-left" style="width:35%">
+                  <a class="btn btn-info btn-sm mx-5 mt-2 " href="/camp/<%=campData._id %>/comment/new">Add Review</a>
+              </div>
+            </div>
+        
+          </div>
+        <div class="card-block">
+          <% campData.comment.forEach(function(comment){ %>
+          <p class="card-text"><strong><span class="text-muted" style="text-transform:capitalize;"><%= comment.author.username %></span>: </strong><%= comment.text %></p>
+          <% if(!currentUser || !currentUser._id.equals(comment.author.id)){ %>
+            <br><hr>
+          <% } %>
+          
+          <% if(currentUser && currentUser._id.equals(comment.author.id)){ %>
+          <form method="POST" action="/camp/<%= campData._id %>/comment/<%= comment._id %>?_method=DELETE">
+            <button type="submit" class="btn btn-danger btn-sm float-right">Delete</button>
+          </form>
+          <a class="btn btn-warning btn-sm float-right mx-2" href="/camp/<%=campData._id %>/comment/<%=comment._id %>/edit">Edit</a>
+          <br><hr>
+          <% } %>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

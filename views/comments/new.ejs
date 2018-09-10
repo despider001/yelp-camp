@@ -1,0 +1,27 @@
+<% include ../partials/header %>
+
+<div class ="jumbotron text-center">
+    <h3 class="my-3">Add A Review to <%= campData.name %></h3>
+
+
+          <form method="POST" action ="/camp/<%= campData._id %>/comment">
+        <div class="form-group row">
+          <label for="url" class="col-sm-3 col-form-label"></label>
+          <div class="col-sm-6">
+            
+            <input type="text" class="form-control" name = "comment[text]" placeholder="Your comment">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="submit" class="col-sm-3 col-form-label"></label>
+          <div class="col-sm-6">
+            <input type="submit" class="form-control btn btn-success" value = "Submit">
+          </div>
+        </div>
+        </form>
+
+</div>
+
+
+<% include ../partials/footer %>
